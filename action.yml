@@ -1,0 +1,28 @@
+name: 'radon'
+
+description: 'Github docker action of python radon package'
+
+inputs:
+  command:
+    description: 'Options: raw, cc, mi and hal'
+    required: true
+    default: ''
+
+  arguments:
+    description: 'Send arguments to a metric, see tutorial'
+    required: false
+    default: ''
+
+  path:
+    description: 'path to directory with code'
+    required: true
+    default: '.'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - ${{ inputs.command }}
+  - ${{ inputs.arguments }}
+  - ${{ inputs.path }}
+
